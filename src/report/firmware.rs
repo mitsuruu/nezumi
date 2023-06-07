@@ -1,23 +1,23 @@
 use hidapi::HidDevice;
-use std::{ thread, time::Duration };
+use std::{thread, time::Duration};
 
 pub fn get(device: &HidDevice, wired: bool) {
-    let mut bfr_w = [0u8; 65];
+	let mut bfr_w = [0u8; 65];
 
-    if wired {
-        bfr_w[3] = 0x02;
-    }
-    
-    bfr_w[4] = 0x03;
-    bfr_w[6] = 0x81;
+	if wired {
+		bfr_w[3] = 0x02;
+	}
 
-    device.send_feature_report(&bfr_w).unwrap();
+	bfr_w[4] = 0x03;
+	bfr_w[6] = 0x81;
 
-    thread::sleep(Duration::from_millis(50));
+	device.send_feature_report(&bfr_w).unwrap();
 
-    let mut bfr_r = [0u8; 65];
+	thread::sleep(Duration::from_millis(50));
 
-    device.get_feature_report(&mut bfr_r).unwrap();
+	let mut bfr_r = [0u8; 65];
 
-    println!("{}.{}.{}.{}", bfr_r[7], bfr_r[8], bfr_r[9], bfr_r[10]);
+	device.get_feature_report(&mut bfr_r).unwrap();
+
+	println!("{}.{}.{}.{}", bfr_r[7], bfr_r[8], bfr_r[9], bfr_r[10]);
 }

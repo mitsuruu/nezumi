@@ -1,0 +1,7 @@
+# Can't always count on contributors using the right line endings.
+newline_style = "Unix"
+# Spaces are always evil, use tabs.
+hard_tabs = true
+# brace_style = "AlwaysNextLine"
+# control_brace_style = "AlwaysNextLine"
+fn_single_line = true
