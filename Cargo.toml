@@ -1,6 +1,6 @@
 [package]
-name = "mow"
-authors = ["Ola Næss Kaldestad <mail@okal.no>"]
+name = "nezumi"
+authors = ["Ola Næss Kaldestad <mail@okal.no>", "Yamamech"]
 version = "0.1.0"
 edition = "2021"
 description = """

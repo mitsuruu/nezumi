@@ -1,5 +1,5 @@
 {
-  description = "Mow in Nix!";
+  description = "Nezumi in Nix!";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";

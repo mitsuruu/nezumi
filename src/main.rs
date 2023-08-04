@@ -40,61 +40,61 @@ fn main() {
 
 	// Act upon command line arguments
 	match args.kind {
-		// mow report
+		// nezumi report
 		Kind::Report(report) => match report {
-			// mow report battery
+			// nezumi report battery
 			Report::Battery => report::battery::get(&device, wired),
 
-			// mow report firmware
+			// nezumi report firmware
 			Report::Firmware => report::firmware::get(&device, wired),
 		},
 
-		// mow config
+		// nezumi config
 		Kind::Config(config) => match config {
-			// mow config bind ...
+			// nezumi config bind ...
 			Config::Bind {
 				profile,
 				button,
 				binding,
 			} => config::bind::set(&device, profile, button, binding),
 
-			// mow config scroll <DIRECTION>
+			// nezumi config scroll <DIRECTION>
 			Config::Scroll { direction } => config::scroll::set(&device, direction),
 
-			// mow config profile <ID>
+			// nezumi config profile <ID>
 			Config::Profile { id } => config::profile::set(&device, id),
 
-			// mow config sleep <MINUTES> [SECONDS]
+			// nezumi config sleep <MINUTES> [SECONDS]
 			Config::Sleep { minutes, seconds } => config::sleep::set(&device, minutes, seconds),
 
-			// mow config led-brightness <WIRED> [WIRELESS]
+			// nezumi config led-brightness <WIRED> [WIRELESS]
 			Config::LEDBrightness { wired, wireless } => {
 				config::led_brightness::set(&device, wired, wireless)
 			}
 
-			// mow config led-effect <EFFECT> ...
+			// nezumi config led-effect <EFFECT> ...
 			Config::LEDEffect { profile, effect } => {
 				config::led_effect::set(&device, profile, effect)
 			}
 
-			// mow config polling-rate <MS>
+			// nezumi config polling-rate <MS>
 			Config::PollingRate { ms } => config::polling_rate::set(&device, ms),
 
-			// mow config lift-off <MM>
+			// nezumi config lift-off <MM>
 			Config::LiftOff { mm } => config::polling_rate::set(&device, mm),
 
-			// mow config debounce <MS>
+			// nezumi config debounce <MS>
 			Config::Debounce { profile, ms } => config::debounce::set(&device, profile, ms),
 
-			// mow config dpi-stage <ID>
+			// nezumi config dpi-stage <ID>
 			Config::DPIStage { profile, id } => config::dpi_stage::set(&device, profile, id),
 
-			// mow config dpi-stages <STAGES>...
+			// nezumi config dpi-stages <STAGES>...
 			Config::DPIStages { profile, stages } => {
 				config::dpi_stages::set(&device, profile, stages)
 			}
 
-			// mow config dpi-colors <COLORS>...
+			// nezumi config dpi-colors <COLORS>...
 			Config::DPIColors { profile, colors } => {
 				config::dpi_colors::set(&device, profile, colors)
 			}
