@@ -25,6 +25,8 @@ naersk.lib."${targetPlatform.system}".buildPackage rec {
     cargo
     rustc
     libiconv
+	] ++ lib.optionals stdenv.isLinux [
+		pkgs.libusb1
   ] ++ lib.optionals stdenv.isDarwin [
     pkgs.darwin.apple_sdk.frameworks.AppKit
   ];
