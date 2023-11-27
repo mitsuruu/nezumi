@@ -5,9 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
     naersk.url = "github:nmattia/naersk";
     naersk.inputs.nixpkgs.follows = "nixpkgs";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk }:
+  outputs = { self, nixpkgs, naersk, ... }:
     let
       cargoToml = (builtins.fromTOML (builtins.readFile ./Cargo.toml));
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
