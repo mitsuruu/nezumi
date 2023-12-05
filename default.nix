@@ -40,6 +40,11 @@ naersk.lib."${targetPlatform.system}".buildPackage rec {
   name = cargoToml.package.name;
   version = cargoToml.package.version;
 
+  postInstall = ''
+    mkdir -p $out/lib/udev/rules.d
+    cp 69-nezumi.rules $out/lib/udev/rules.d
+  '';
+
   meta = with lib; {
     description = cargoToml.package.description;
     homepage = cargoToml.package.homepage;
